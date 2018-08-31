@@ -84,7 +84,7 @@ func (d *Data) UpdateDomains(ip string) error {
 		for _, domainResp := range zoneResp.Data {
 			for _, domain := range domains {
 				if domainResp.Name == domain {
-					if domainResp.Content != ip {
+					if domainResp.Content == ip {
 						fmt.Printf("%s.%s is up to date\n", domain, zone)
 					} else if domainResp.Type == "A" && domainResp.Content != ip {
 						updatedRecord := dnsimple.ZoneRecord{
