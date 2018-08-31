@@ -1,0 +1,7 @@
+credentials:
+  token: token
+zones:
+  # Domain must be A records only
+  domain.com:
+    - subdomain1
+    - subdomain2
