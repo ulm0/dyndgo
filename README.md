@@ -2,12 +2,11 @@
 
 > Dynamic DNS record updater for DNSimple
 
-Dyndgo is a tiny tool for update IPv4 for your records on DNSimple
-
+Dyndgo is a tiny tool to update your A records on DNSimple
 
 ## Install dyndgo in your system
 
-```
+```sh
 go get github.com/ulm0/dyndgo
 ```
 
