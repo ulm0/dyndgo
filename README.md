@@ -12,7 +12,7 @@ go get github.com/ulm0/dyndgo
 
 ## Use it
 
-All you need to do is write your token and domains to `data.yml`, and execute the tool
+All you need to do is write your token and domains to [`data.yml`](data.yml), and execute the tool
 
 ```yaml
 credentials:
@@ -22,4 +22,12 @@ zones:
   domain.com:
     - subdomain1
     - subdomain2
+```
+
+## Use it with crontab
+
+Run it every eight hours using [`updater` script](updater)
+
+```sh
+0 */8 * * * /path/to/updater
 ```
