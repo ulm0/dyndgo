@@ -1,8 +1,8 @@
 # Dyndgo
 
-> Dynamic DNS record updater for DNSimple
+[![Go Report Card](https://goreportcard.com/badge/github.com/ulm0/dyndgo)](https://goreportcard.com/report/github.com/ulm0/dyndgo) [![](https://godoc.org/github.com/ulm0/dyndgo?status.svg)](http://godoc.org/github.com/ulm0/dyndgo) [![](https://images.microbadger.com/badges/image/ulm0/dyndgo.svg)](https://microbadger.com/images/ulm0/dyndgo "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/ulm0/dyndgo.svg)](https://microbadger.com/images/ulm0/dyndgo "Get your own version badge on microbadger.com") 
 
-Dyndgo is a tiny tool to update your A records on DNSimple
+> Dyndgo is a tiny tool to update your A records on DNSimple
 
 ## Install dyndgo in your system
 
