@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker run --rm --mount type=bind,source="$(pwd)"/data.yml,target=/app/data.yml ulm0/dyndgo
+docker run --rm -v "$(pwd)"/data.yml:/app/data.yml ulm0/dyndgo
