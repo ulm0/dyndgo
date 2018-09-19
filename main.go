@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 
 	dnsimple "github.com/dnsimple/dnsimple-go/dnsimple"
 	yaml "gopkg.in/yaml.v2"
@@ -22,7 +23,9 @@ func getIP() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return string(respBytes), nil
+	// Get rid of newline
+	ip := strings.TrimSuffix(string(respBytes), "\n")
+	return ip, nil
 }
 
 func main() {
@@ -37,7 +40,7 @@ func main() {
 	if err != nil {
 		log.Fatalln("Error getting IP")
 	}
-	fmt.Printf("IP detected: %s", newIP)
+	fmt.Printf("IP detected: %s\n", newIP)
 
 	err = d.UpdateDomains(newIP)
 	if err != nil {
@@ -85,7 +88,7 @@ func (d *Data) UpdateDomains(ip string) error {
 			for _, domain := range domains {
 				if domainResp.Name == domain {
 					if domainResp.Content == ip {
-						fmt.Printf("%s.%s is up to date\n", domain, zone)
+						fmt.Printf("- %s.%s is up to date\n", domain, zone)
 					} else if domainResp.Type == "A" && domainResp.Content != ip {
 						updatedRecord := dnsimple.ZoneRecord{
 							ID:      domainResp.ID,
