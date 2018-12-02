@@ -1,55 +1,12 @@
-package main
+package data
 
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
-	"net/http"
-	"os"
 	"strconv"
-	"strings"
 
-	dnsimple "github.com/dnsimple/dnsimple-go/dnsimple"
+	"github.com/dnsimple/dnsimple-go/dnsimple"
 	yaml "gopkg.in/yaml.v2"
-)
-
-func getIP() (string, error) {
-	resp, err := http.Get("http://icanhazip.com")
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	respBytes, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
-	}
-	// Get rid of newline
-	ip := strings.TrimSuffix(string(respBytes), "\n")
-	return ip, nil
-}
-
-func main() {
-	var d Data
-	_, err := d.ReadData(dataFilename)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-
-	newIP, err := getIP()
-	if err != nil {
-		log.Fatalln("Error getting IP")
-	}
-	fmt.Printf("IP detected: %s\n", newIP)
-
-	err = d.UpdateDomains(newIP)
-	if err != nil {
-		fmt.Printf("%s\n", err)
-	}
-}
-
-const (
-	dataFilename = "./data.yml"
 )
 
 // Data template for YAML file
