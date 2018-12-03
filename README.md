@@ -7,12 +7,12 @@
 ## Install dyndgo in your system
 
 ```sh
-go get github.com/ulm0/dyndgo
+go get github.com/ulm0/dyndgo/cmd/dyndgo
 ```
 
 ## Use it
 
-All you need to do is write your token and domains to [`data.yml`](data.yml), and execute the tool
+All you need to do is write your token and domains to [`data.yml`](data.yml), and execute the tool (`dyndgo -f /path/to/data.yml`)
 
 ```yaml
 credentials:
@@ -31,3 +31,5 @@ Run it every eight hours using [`updater` script](updater)
 ```sh
 0 */8 * * * /path/to/updater
 ```
+
+**Note**: [`updater` script](updater) uses docker.
