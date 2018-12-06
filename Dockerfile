@@ -1,14 +1,11 @@
 FROM golang:alpine
-WORKDIR /go/src/github.com/ulm0
+LABEL maintainer "Pierre Ugaz <ulm0@innersea.xyz>"
+COPY . /go/src/github.com/ulm0/dyndgo
+WORKDIR /go/src/github.com/ulm0/dyndgo/cmd/dyndgo
 RUN apk add --no-cache \
-    git \
     upx && \
-    go get -v -u github.com/golang/dep/cmd/dep && \
-    go get -v -d github.com/ulm0/dyndgo/cmd/dyndgo && \
-    cd dyndgo/cmd/dyndgo && \
-    dep ensure && \
     CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -installsuffix cgo && \
-    upx --best dyndgo
+    upx --ultra-brute dyndgo
 FROM scratch
 WORKDIR /app/
 ADD https://raw.githubusercontent.com/containous/traefik/master/script/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
