@@ -11,8 +11,14 @@ import (
 
 // Data template for YAML file
 type Data struct {
-	Credentials map[string]string   `yaml:"credentials"`
-	Zones       map[string][]string `yaml:"zones"`
+	Credentials map[string]string  `yaml:"credentials"`
+	Zones       map[string][]Zones `yaml:"zones"`
+}
+
+// Zones template for YAML file
+type Zones struct {
+	UpdateRootDomain bool     `yaml:"updateRootDomain"` // update root domain as well
+	RecordsList      []string `yanl:"recordsList"`
 }
 
 // ReadData gets data from YAML file

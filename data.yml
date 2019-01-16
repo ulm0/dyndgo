@@ -3,5 +3,7 @@ credentials:
 zones:
   # Domain must be A records only
   domain.com:
-    - subdomain1
-    - subdomain2
+    updateRootDomain: true # update root domain as well (domain.com in this case)
+    recordsList:
+      - subdomain1
+      - subdomain2
